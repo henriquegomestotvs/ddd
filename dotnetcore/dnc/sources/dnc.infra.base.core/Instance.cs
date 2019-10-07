@@ -1,4 +1,4 @@
-﻿namespace dnc.infra.instance
+﻿namespace dnc.infra.@base.core
 {
   public static class Instance
   {

@@ -1,33 +1,35 @@
-﻿using FastMapper.NetCore;
+﻿using dnc.infra.app.viewmodel.core.ViewModels;
+using dnc.infra.domain.core.Entities;
+using FastMapper.NetCore;
 using System.Collections.Generic;
 
 namespace dnc.infra.app.mapper.core
 {
   public abstract class AppAdapter<TEntity, TViewModel>
-    where TEntity : class
-    where TViewModel : class
+    where TEntity : Entity
+    where TViewModel : ViewModel
   {
     protected AppAdapter()
     {
 
     }
 
-    public virtual TViewModel To(TEntity entity)
+    public TViewModel To(TEntity entity)
     {
       return TypeAdapter.Adapt<TEntity, TViewModel>(entity);
     }
 
-    public virtual IEnumerable<TViewModel> To(IEnumerable<TEntity> entities)
+    public IEnumerable<TViewModel> To(IEnumerable<TEntity> entities)
     {
       return TypeAdapter.Adapt<IEnumerable<TEntity>, IEnumerable<TViewModel>>(entities);
     }
 
-    public virtual TEntity To(TViewModel viewModel)
+    public TEntity To(TViewModel viewModel)
     {
       return TypeAdapter.Adapt<TViewModel, TEntity>(viewModel);
     }
 
-    public virtual IEnumerable<TEntity> To(IEnumerable<TViewModel> viewModels)
+    public IEnumerable<TEntity> To(IEnumerable<TViewModel> viewModels)
     {
       return TypeAdapter.Adapt<IEnumerable<TViewModel>, IEnumerable<TEntity>>(viewModels);
     }
